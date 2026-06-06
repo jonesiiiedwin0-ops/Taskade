@@ -1,305 +1,285 @@
 # 🤝 Contributing to Taskade
 
-**Welcome to the Taskade community! We're thrilled you're interested in contributing to our mission of reaching 100,000 GitHub stars while building the world's best productivity platform.**
+First off, thank you for considering contributing to Taskade! It's people like you that make the open source community such an amazing place to learn, inspire, and create. Every contribution helps us move closer to our goal of 100,000 GitHub stars! ⭐
 
-## 🌟 Our Vision
+## 🌟 Code of Conduct
 
-Taskade is more than just a project—it's a movement to revolutionize how teams collaborate and get work done. Every contribution, no matter how small, brings us closer to our goal of creating the most beloved open-source productivity platform.
+This project and everyone participating in it is governed by our [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
 
-## 🎯 Ways to Contribute
+## 🎯 How Can I Contribute?
 
-### 🐛 **Bug Reports & Issues**
-- Found a bug? [Create an issue](https://github.com/jonesiiiedwin0-ops/Taskade/issues/new?template=bug_report.md)
-- Use our bug report template for faster resolution
-- Include screenshots, steps to reproduce, and environment details
+### 🐛 Reporting Bugs
 
-### 💡 **Feature Requests**
-- Have an idea? [Submit a feature request](https://github.com/jonesiiiedwin0-ops/Taskade/issues/new?template=feature_request.md)
-- Check our [roadmap](./ROADMAP_TO_100K_STARS.md) first
-- Explain the use case and potential impact
+Before creating bug reports, please check the existing issues as you might find that the problem has already been reported. When creating a bug report, include as many details as possible:
 
-### 🔧 **Code Contributions**
-- Pick an issue labeled `good first issue` for beginners
-- Check issues labeled `help wanted` for priority items
-- Follow our development workflow below
+- Use a clear and descriptive title
+- Describe the exact steps to reproduce the problem
+- Provide specific examples to demonstrate the steps
+- Describe the behavior you observed and what behavior you expected
+- Include screenshots if applicable
+- Specify your OS, browser version, and Taskade version
 
-### 📝 **Documentation**
-- Improve existing docs
-- Write tutorials and guides
-- Translate content to other languages
-- Update README and code comments
+### 💡 Suggesting Enhancements
 
-### 🎨 **Design & UX**
-- Submit UI/UX improvements
-- Create icons, graphics, and assets
-- Propose design system enhancements
-- Conduct user research and testing
+Enhancement suggestions are tracked as GitHub issues. When creating an enhancement suggestion:
 
-### 🌍 **Community & Advocacy**
-- Answer questions in discussions
-- Write blog posts and tutorials
-- Speak at conferences and meetups
-- Share Taskade on social media
+- Use a clear and descriptive title
+- Provide a step-by-step description of the suggested enhancement
+- Provide specific examples to demonstrate the steps
+- Describe the current behavior and explain which behavior you expected
+- Explain why this enhancement would be useful
+- List some other tools where this enhancement exists (if applicable)
 
-## 🚀 Getting Started
+### 💻 Your First Code Contribution
 
-### Prerequisites
+Unsure where to begin? You can start by looking through these issue labels:
 
-```bash
-# Required versions
-Node.js >= 18.0.0
-npm >= 9.0.0
-Git >= 2.30.0
+- `good-first-issue` - Issues that are perfect for newcomers
+- `help-wanted` - Issues that need assistance
+- `documentation` - Documentation improvements
+- `frontend` - Frontend-related issues
+- `backend` - Backend-related issues
+- `design` - UI/UX improvements
 
-# Optional but recommended
-Docker >= 20.0.0
-PostgreSQL >= 14.0
-Redis >= 6.0
-```
+### 🏗️ Development Process
 
-### Development Setup
-
-1. **Fork and Clone**
+1. **Fork the repository**
    ```bash
-   # Fork the repository on GitHub, then:
-   git clone https://github.com/YOUR_USERNAME/Taskade.git
+   git clone https://github.com/YOUR-USERNAME/Taskade.git
    cd Taskade
-   git remote add upstream https://github.com/jonesiiiedwin0-ops/Taskade.git
    ```
 
-2. **Install Dependencies**
+2. **Create a branch**
+   ```bash
+   git checkout -b feature/your-feature-name
+   # or
+   git checkout -b fix/your-bug-fix
+   ```
+
+3. **Set up development environment**
    ```bash
    npm install
-   ```
-
-3. **Environment Setup**
-   ```bash
-   cp .env.example .env.local
-   # Edit .env.local with your configuration
-   ```
-
-4. **Database Setup**
-   ```bash
-   # Using Docker (recommended)
-   docker-compose up -d postgres redis
-   
-   # Or install locally
-   # Follow database setup guide in docs/development.md
-   ```
-
-5. **Start Development**
-   ```bash
+   cp .env.example .env
    npm run dev
-   # Open http://localhost:3000
    ```
 
-## 📋 Development Workflow
+4. **Make your changes**
+   - Follow our coding standards
+   - Write or update tests as needed
+   - Update documentation if necessary
 
-### 1. **Create a Branch**
+5. **Test your changes**
+   ```bash
+   npm run test
+   npm run lint
+   npm run build
+   ```
+
+6. **Commit your changes**
+   ```bash
+   git add .
+   git commit -m "feat: add amazing new feature"
+   ```
+   
+   We use [Conventional Commits](https://conventionalcommits.org/):
+   - `feat:` - New features
+   - `fix:` - Bug fixes
+   - `docs:` - Documentation changes
+   - `style:` - Code style changes
+   - `refactor:` - Code refactoring
+   - `test:` - Test additions or modifications
+   - `chore:` - Build process or auxiliary tool changes
+
+7. **Push to your fork**
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+8. **Create a Pull Request**
+   - Use a clear and descriptive title
+   - Reference any related issues
+   - Provide a comprehensive description of your changes
+   - Include screenshots for UI changes
+
+## 🛠️ Development Setup
+
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+- PostgreSQL 14+
+- Redis (optional, for caching)
+
+### Environment Variables
+Copy `.env.example` to `.env` and configure:
+
 ```bash
-git checkout -b feature/your-feature-name
-# or
-git checkout -b fix/bug-description
-# or
-git checkout -b docs/improvement-area
+# Database
+DATABASE_URL=postgresql://username:password@localhost:5432/taskade
+
+# Redis (optional)
+REDIS_URL=redis://localhost:6379
+
+# JWT Secret
+JWT_SECRET=your-super-secret-key
+
+# App Settings
+PORT=3000
+NODE_ENV=development
 ```
 
-### 2. **Make Changes**
-- Write clean, well-documented code
-- Follow our coding standards (see below)
-- Add tests for new functionality
-- Update documentation as needed
+### Project Structure
+```
+Taskade/
+├── client/          # React frontend
+├── server/          # Node.js backend
+├── docs/            # Documentation
+├── tests/           # Test files
+├── docker/          # Docker configurations
+└── scripts/         # Build and deployment scripts
+```
 
-### 3. **Test Your Changes**
+## 📋 Coding Standards
+
+### JavaScript/TypeScript
+- Use TypeScript for type safety
+- Follow ESLint and Prettier configurations
+- Use meaningful variable and function names
+- Write JSDoc comments for complex functions
+- Prefer async/await over promises
+
+### React Components
+- Use functional components with hooks
+- Follow the component file structure:
+  ```typescript
+  // Imports
+  import React from 'react';
+  
+  // Types
+  interface Props {
+    // ...
+  }
+  
+  // Component
+  export const Component: React.FC<Props> = ({ prop }) => {
+    // ...
+  };
+  ```
+
+### CSS/Styling
+- Use Tailwind CSS for styling
+- Follow mobile-first responsive design
+- Use semantic class names
+- Avoid inline styles
+
+### Testing
+- Write unit tests for utility functions
+- Write integration tests for API endpoints
+- Write component tests for React components
+- Aim for >80% code coverage
+
+## 🎨 Design Guidelines
+
+- Follow our [Design System](./docs/design-system.md)
+- Use consistent colors, typography, and spacing
+- Ensure accessibility (WCAG 2.1 AA compliance)
+- Test on multiple screen sizes
+- Optimize for performance
+
+## 📚 Documentation
+
+- Update README.md for user-facing changes
+- Update API documentation for backend changes
+- Add JSDoc comments for complex functions
+- Update changelog for notable changes
+- Write clear commit messages
+
+## 🧪 Testing
+
+### Running Tests
 ```bash
 # Run all tests
 npm test
 
-# Run specific test suites
-npm run test:unit
-npm run test:integration
-npm run test:e2e
+# Run tests in watch mode
+npm run test:watch
 
-# Check code quality
-npm run lint
-npm run format
+# Run tests with coverage
+npm run test:coverage
+
+# Run specific test file
+npm test TaskList.test.tsx
 ```
 
-### 4. **Commit Changes**
-```bash
-# Stage your changes
-git add .
+### Writing Tests
+- Test file naming: `ComponentName.test.tsx`
+- Test descriptions should be clear and specific
+- Use `describe` blocks to group related tests
+- Mock external dependencies
+- Test both success and error scenarios
 
-# Follow conventional commits
-git commit -m "feat: add real-time collaboration feature"
-# or
-git commit -m "fix: resolve task duplication bug"
-# or
-git commit -m "docs: update API documentation"
-```
+## 🚀 Deployment
 
-### 5. **Push and Create PR**
-```bash
-git push origin your-branch-name
-# Then create a pull request on GitHub
-```
+Our deployment process is automated through GitHub Actions:
 
-## 📏 Coding Standards
+1. **Development**: Auto-deploys on push to `develop` branch
+2. **Staging**: Auto-deploys on push to `staging` branch
+3. **Production**: Auto-deploys on push to `main` branch (with approval)
 
-### **Code Style**
-- Use TypeScript for type safety
-- Follow ESLint and Prettier configurations
-- Use meaningful variable and function names
-- Write self-documenting code with comments for complex logic
+## 📈 Performance Guidelines
 
-### **Commit Messages**
-We use [Conventional Commits](https://www.conventionalcommits.org/):
+- Optimize images and assets
+- Use lazy loading for components
+- Minimize bundle size
+- Implement proper caching strategies
+- Monitor Core Web Vitals
 
-```
-type(scope): description
+## 🔒 Security Guidelines
 
-[optional body]
+- Never commit secrets or API keys
+- Validate all user inputs
+- Use parameterized queries for database operations
+- Implement proper authentication and authorization
+- Keep dependencies updated
 
-[optional footer]
-```
+## 🏷️ Issue Labels
 
-**Types:**
-- `feat`: New feature
-- `fix`: Bug fix
-- `docs`: Documentation changes
-- `style`: Code style changes (formatting, etc.)
-- `refactor`: Code refactoring
-- `test`: Adding or updating tests
-- `chore`: Maintenance tasks
+- `bug` - Something isn't working
+- `enhancement` - New feature or request
+- `good-first-issue` - Good for newcomers
+- `help-wanted` - Extra attention is needed
+- `documentation` - Improvements to documentation
+- `question` - Further information is requested
+- `frontend` - Frontend-related issue
+- `backend` - Backend-related issue
+- `design` - UI/UX related issue
+- `performance` - Performance improvements
+- `security` - Security-related issue
 
-**Examples:**
-```
-feat: add real-time collaboration
-fix(auth): resolve login redirect issue
-docs: update contributing guidelines
-test: add unit tests for task creation
-```
+## 🎉 Recognition
 
-### **Testing Standards**
-- Write unit tests for all new functions
-- Add integration tests for API endpoints
-- Include E2E tests for critical user workflows
-- Aim for >80% code coverage
-- Test edge cases and error scenarios
+We believe in recognizing our contributors:
 
-## 🎭 Code of Conduct
+- **Contributors** are listed in our README
+- **Top contributors** get special mentions in releases
+- **Maintainers** receive exclusive swag and conference opportunities
+- **Everyone** helps us reach our 100K stars goal!
 
-We're committed to providing a welcoming and inclusive environment. Please read our [Code of Conduct](./CODE_OF_CONDUCT.md) and help us maintain a positive community.
+## 💬 Community
 
-## 🏆 Recognition
+- Join our [Discord](https://discord.gg/taskade) for real-time discussions
+- Follow us on [Twitter](https://twitter.com/taskadedev) for updates
+- Subscribe to our [newsletter](https://taskade.dev/newsletter) for weekly insights
 
-**We value every contribution and recognize our community members:**
+## ❓ Questions?
 
-### 🌟 **Contributor Levels**
-- **⭐ Contributor**: Made 1+ merged PR
-- **🚀 Regular Contributor**: Made 5+ merged PRs
-- **💎 Core Contributor**: Made 20+ merged PRs
-- **🏆 Maintainer**: Trusted with project direction
+Don't hesitate to ask questions! You can:
 
-### 🎁 **Rewards & Recognition**
-- **Contributors Wall** in README
-- **Special Discord badges** and roles
-- **Exclusive swag** and stickers
-- **Conference speaking** opportunities
-- **Open source certificates** for achievements
-- **Early access** to new features
-
-## 📞 Getting Help
-
-**Stuck? Need help? We're here for you!**
-
-- 💬 [Discord Community](https://discord.gg/taskade) - Real-time chat
-- 🙋 [GitHub Discussions](https://github.com/jonesiiiedwin0-ops/Taskade/discussions) - Q&A and ideas
-- 📧 [Email Support](mailto:contributors@taskade.com) - Direct contact
-- 📖 [Documentation](./docs/) - Comprehensive guides
-- 🎥 [Video Tutorials](https://youtube.com/taskade) - Step-by-step learning
-
-## 🎯 Priority Areas
-
-**Looking for where to contribute? Here are our current focus areas:**
-
-### **High Priority** 🔥
-- Real-time collaboration features
-- Performance optimization
-- Mobile responsiveness
-- AI integration foundations
-- Security enhancements
-
-### **Medium Priority** ⚡
-- Third-party integrations
-- Advanced analytics
-- Internationalization
-- Plugin system architecture
-- Advanced automation
-
-### **Future Focus** 🔮
-- VR/AR interfaces
-- Blockchain integrations
-- IoT device support
-- Advanced AI features
-- Enterprise solutions
-
-## 📊 Contribution Guidelines
-
-### **Pull Request Guidelines**
-
-✅ **Good PRs:**
-- Solve a specific problem
-- Include comprehensive tests
-- Update relevant documentation
-- Follow coding standards
-- Have clear, descriptive titles
-- Reference related issues
-
-❌ **Avoid:**
-- Massive changes in single PR
-- Breaking changes without discussion
-- Code without tests
-- Ignoring CI failures
-- Unclear commit messages
-
-### **Review Process**
-
-1. **Automated Checks** - CI/CD pipeline runs
-2. **Code Review** - Maintainer reviews code
-3. **Testing** - QA team validates changes
-4. **Approval** - Final approval and merge
-5. **Release** - Changes deployed to staging/production
-
-**Review Timeline:**
-- Small fixes: 1-2 days
-- Features: 3-7 days
-- Major changes: 1-2 weeks
-
-## 🌍 Community Guidelines
-
-### **Communication**
-- Be respectful and inclusive
-- Use clear, constructive language
-- Help newcomers feel welcome
-- Share knowledge freely
-- Give credit where due
-
-### **Collaboration**
-- Coordinate with maintainers on large changes
-- Discuss before implementing breaking changes
-- Share work in progress for feedback
-- Be open to suggestions and criticism
-- Help review others' contributions
-
-## 🎉 Thank You!
-
-**Every star, every contribution, every interaction brings us closer to our goal of 100,000 GitHub stars. You're not just contributing code—you're helping build the future of productivity tools.**
-
-**Together, we'll make Taskade the most loved open-source project in the productivity space!**
+1. Open a [GitHub Discussion](https://github.com/jonesiiiedwin0-ops/Taskade/discussions)
+2. Join our [Discord community](https://discord.gg/taskade)
+3. Create an issue with the `question` label
 
 ---
 
-*This contributing guide is a living document. Help us improve it by suggesting changes or submitting PRs.*
+**Thank you for contributing to Taskade! Together, we're building the future of productivity.** 🚀
 
-**Happy coding! 🚀**
+*Remember: Every star ⭐, every contribution 💻, and every bug report 🐛 brings us closer to our goal of 100,000 stars and helps millions of people be more productive!*
